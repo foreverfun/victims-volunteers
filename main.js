@@ -8,85 +8,64 @@ function person(name, phone, street) {
 
 // ===============================================================
 // get victims
-var numberOfVictims = prompt("How many disaster victims?", "Enter");
+// confirm
 
-/*
-// using 3 arrays
-var victimNameArray=[];
-var victimPhoneArray=[];
-var victimStreetArray=[];
-
-for (var i=0; i<numberOfVictims; i++) {
-	victimNameArray.push(prompt("Enter Name:", "Enter Victim's Name"));
-	//console.log(victimNameArray);
-	victimPhoneArray.push(prompt("Enter Phone Number", "Enter Victim's Phone Number"));
-	//console.log(victimPhoneArray);
-	victimStreetArray.push(prompt("Enter Street", "Enter Victim's Street"));
-	//console.log(victimStreetArray);
-};
-*/
-
-// using an object
+var moreVictims = true;
 var victimsArray = [];
+var i=0;
 
-for (var i=0; i<numberOfVictims; i++) {
-	victimsArray[i] = new person(
-		prompt("Enter Name:", "Enter Victim's Name"), 
-		prompt("Enter Phone Number", "Enter Victim's Phone Number"),
-		prompt("Enter Street", "Enter Victim's Street"));
-	console.log(victimsArray[i]);
+while (moreVictims) {		
+	moreVictims = confirm("Click OK to Enter Victim Info");
+	if (moreVictims === true) {
+		victimsArray[i]= new person(
+			prompt("Enter Name:", "Enter Victim's Name"), 
+			prompt("Enter Phone Number", "Enter Victim's Phone Number"),
+			prompt("Enter Street", "Enter Victim's Street")
+			);
+		i++;
+	} else {
+		break;
+	}
 };
-
 
 // ===============================================================
 // get volunteers
-var numberOfVolunteers = prompt("How many volunteers?", "Enter");
+// confirm
 
-/*
-// using 3 arrays
-var volunteerNameArray=[];
-var volunteerPhoneArray=[];
-var volunteerStreetArray=[];
-
-for (var i=0; i<numberOfVolunteers; i++) {
-	volunteerNameArray.push(prompt("Enter Name:", "Enter Volunteer's Name"));
-	volunteerPhoneArray.push(prompt("Enter Phone Number:", "Enter Volunteer's Phone Number"));
-	volunteerStreetArray.push(prompt("Enter Street:", "Enter Volunteer's Street"));
-};
-*/
-
-//using an object
+var moreVolunteers = true;
 var volunteersArray = [];
+var counter = 0;
 
-for (var i=0; i<numberOfVolunteers; i++) {
-	volunteersArray[i] = new person(
-		prompt("Enter Name:", "Enter Volunteer's Name"),
-		prompt("Enter Phone Number:", "Enter Volunteer's Phone Number"),
-		prompt("Enter Street:", "Enter Volunteer's Street")
-	);
-	console.log(volunteersArray[i]);
+while (moreVolunteers) {
+	moreVolunteers = confirm("Click OK to Enter Volunteer Info");
+	if (moreVolunteers === true) {
+		volunteersArray[counter]=new person(
+			prompt("Enter Name:", "Enter Volunteer's Name"),
+			prompt("Enter Phone Number:", "Enter Volunteer's Phone Number"),
+			prompt("Enter Street:", "Enter Volunteer's Street")
+			);
+		counter++;
+	} else {
+		break;
+	}
 };
-
-
 
 // Display a list
 var result="";
 
-for (var i=0; i<numberOfVictims; i++) {
-	result += "Victim " + (i+1) + ": " + 
-		victimsArray[i].name + " " + 
-		victimsArray[i].phone + " " + 
-		victimsArray[i].street + "\n";	
-}
+for (var x=0; x<victimsArray.length; x++) {
+	result += "Victim " + (x+1) + ": " + 
+		victimsArray[x].name + " " + 
+		victimsArray[x].phone + " " + 
+		victimsArray[x].street + "\n";	
+};
 
-for (var i=0; i<numberOfVolunteers; i++) {
-	result += "Volunteer " + (i+1) + ": " +
-	volunteersArray[i].name + " " + 
-	volunteersArray[i].phone + " " + 
-	volunteersArray[i].street + "\n";
-	console.log(result);
-}
-
+for (var y=0; y<volunteersArray.length; y++) {
+	result += "Volunteer " + (y+1) + ": " +
+	volunteersArray[y].name + " " + 
+	volunteersArray[y].phone + " " + 
+	volunteersArray[y].street + "\n";
+};
 
 alert(result);
-console.log(result);
+//console.log(result);
